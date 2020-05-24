@@ -1,0 +1,16 @@
+.header-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.header-content > h2 {
+    color: white;
+    -webkit-text-stroke: 1px #1069a5;
+}
+
+.header-content > a > img {
+    max-width: 100px;
+}
+

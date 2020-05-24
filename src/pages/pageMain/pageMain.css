@@ -1,0 +1,15 @@
+.main-content {
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content > img {
+    max-width: 400px;
+}
+
+.main-content > a > button {
+    padding: 20px 10px;
+}
