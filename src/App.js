@@ -4,6 +4,8 @@ import {Router, Switch, Route} from 'react-router-dom';
 import {createBrowserHistory as createHistory} from 'history';
 import PageMain from './pages/pageMain/pageMain';
 import PageFaculty from './pages/pageFaculty/pageFaculty';
+import PageGroup from './pages/pageGroup/pageGroup';
+import PageScheduleGroup from './pages/pageScheduleGroup/pageScheduleGroup';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -39,6 +41,8 @@ function App() {
       <Switch>
         <Route path='/' component={PageMain} exact />
         <Route path='/schedule-group' component={PageFaculty} exact />
+        <Route path='/schedule-group/find' component={PageGroup} />
+        <Route path='/schedule-group/:group' component={PageScheduleGroup} exact />
       </Switch>
     </Router>
   );

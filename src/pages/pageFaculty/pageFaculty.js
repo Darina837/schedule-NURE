@@ -56,8 +56,8 @@ export default function PageFaculty() {
                     <h3>Оберіть факультет</h3>
                     <ul>
                         {faculties.map(faculty => (
-                            <Link to='/schedule-group/find' className='link'>
-                                <li className='faculty-item' key={faculty.id} title={faculty.full_name} onClick={() => {
+                            <Link to='/schedule-group/find' className='link' key={faculty.id}>
+                                <li className='faculty-item' title={faculty.full_name} onClick={() => {
                                     if(localStorage.getItem('Faculty')) {
                                         localStorage.removeItem('Faculty');
                                         localStorage.setItem('Faculty', `${faculty.id}`);

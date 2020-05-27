@@ -1,0 +1,37 @@
+.scheduleGroup-content {
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scheduleGroup-content > table {
+    width: calc(100vw - 40px);
+    text-align: center;
+   
+}
+
+.lk {
+    background-color: rgb(255, 253, 149);
+}
+
+.pz {
+    background-color: rgb(150, 250, 167);
+}
+
+.lb {
+    background-color: rgb(208, 141, 253);
+}
+
+.cons {
+    background-color: rgb(185, 185, 185);
+}
+
+.zal {
+    background-color: rgb(238, 173, 173);
+}
+
+.isp {
+    background-color: rgb(139, 126, 250);
+}
