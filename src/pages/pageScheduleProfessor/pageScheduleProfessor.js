@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 
-import './pageScheduleGroup.css';
 import Sugar from 'react-preloaders/lib/Sugar/Sugar';
 
 import cat from '../../media/cat.gif';
@@ -19,7 +18,7 @@ import Pagination from '../../components/pagination/pagination';
 
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 
-export default function PageScheduleGroup(props) {
+export default function PageScheduleProfessor(props) {
 
     const [error, setError] = React.useState(null);
     const [isLoaded, setIsLoaded] = React.useState(false);
@@ -73,7 +72,7 @@ export default function PageScheduleGroup(props) {
                 let data = [];
 
                 result.forEach( elem => {
-                    if(elem.group_id !== Number(localStorage.getItem('Group'))) { //не совпало с айди группой
+                    if(elem.teacher_id !== Number(localStorage.getItem('Professor'))) { //не совпало с айди группой
                         return null;
                     } else { //совпало с айди группой
                         
@@ -350,7 +349,8 @@ export default function PageScheduleGroup(props) {
                         />  
                         <Breadcrumb>
                             <Breadcrumb.Item href="/schedule-faculty">Обрати факультет</Breadcrumb.Item>
-                            <Breadcrumb.Item href="/schedule-group/find">Обрати групу</Breadcrumb.Item>
+                            <Breadcrumb.Item href="/schedule-professor">Обрати кафедру</Breadcrumb.Item>
+                            <Breadcrumb.Item href='/schedule-professor/find'>Обрати викладача</Breadcrumb.Item>
                             <Breadcrumb.Item active>Розклад</Breadcrumb.Item>
                         </Breadcrumb>  
                     </div>
@@ -372,7 +372,7 @@ export default function PageScheduleGroup(props) {
                                             <>
                                                 <GiSpellBook />{el.subjects.find(e => e.idTime === item.id).Subject}
                                                 <br/>
-                                                <FaUser />{el.subjects.find(e => e.idTime === item.id).Teacher}
+                                                <FaUser />{el.subjects.find(e => e.idTime === item.id).Group}
                                                 <br/>
                                                 <MdLocationOn />{el.subjects.find(e => e.idTime === item.id).Auditory}
                                                 <br/>
@@ -416,5 +416,4 @@ export default function PageScheduleGroup(props) {
             </>
         );    
     }
-    
 }

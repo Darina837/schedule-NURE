@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import {Nav} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './pageFaculty.css';
 
 import {Sugar} from 'react-preloaders';
+
 
 export default function PageFaculty() {
     const [error, setError] = React.useState(null);
@@ -21,7 +21,7 @@ export default function PageFaculty() {
                 setIsLoaded(true);
                 setFaculties(result);
             },
-            (error) => {
+            error => {
                 setIsLoaded(true);
                 setError(error);
             }
@@ -45,14 +45,6 @@ export default function PageFaculty() {
             <>
                 <Header />
                 <main className='faculty-content'>
-                    <Nav variant="tabs" defaultActiveKey="link-1">
-                        <Nav.Item>
-                            <Nav.Link eventKey="link-1">Розклад на групу</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="link-2" href='/schedule-professor'>Розклад на викладача</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
                     <h3>Оберіть факультет</h3>
                     <ul>
                         {faculties.map(faculty => (

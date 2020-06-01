@@ -6,9 +6,13 @@ import PageMain from './pages/pageMain/pageMain';
 import PageFaculty from './pages/pageFaculty/pageFaculty';
 import PageGroup from './pages/pageGroup/pageGroup';
 import PageScheduleGroup from './pages/pageScheduleGroup/pageScheduleGroup';
+import PageDepartment from './pages/pageDepartment/pageDepartment';
+import PageProfessor from './pages/pageProfessor/pageProfessor';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import PageScheduleProfessor from './pages/pageScheduleProfessor/pageScheduleProfessor';
+
 
 const history = createHistory();
 
@@ -36,13 +40,17 @@ function App() {
     anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
   
 })
+
   return (
     <Router history={history}>
       <Switch>
         <Route path='/' component={PageMain} exact />
-        <Route path='/schedule-group' component={PageFaculty} exact />
+        <Route path='/schedule-faculty' component={PageFaculty} exact />
         <Route path='/schedule-group/find' component={PageGroup} />
         <Route path='/schedule-group/:group' component={PageScheduleGroup} exact />
+        <Route path='/schedule-professor' component={PageDepartment} exact />
+        <Route path='/schedule-professor/find' component={PageProfessor} />
+        <Route path='/schedule-professor/:professor' component={PageScheduleProfessor} />
       </Switch>
     </Router>
   );

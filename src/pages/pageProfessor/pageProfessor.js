@@ -1,26 +1,26 @@
 import React from 'react';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
-import './pageGroup.css';
+
 import Sugar from 'react-preloaders/lib/Sugar/Sugar';
 import { Link } from 'react-router-dom';
-import {Nav} from 'react-bootstrap';
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
-export default function PageGroup() {
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+
+export default function PageProfessor() {
     const [error, setError] = React.useState(null);
     const [isLoaded, setIsLoaded] = React.useState(false);
-    const [groups, setGroups] = React.useState([]);
+    const [professors, setProfessors] = React.useState([]);
 
     React.useEffect( () => {
 
-        window.fetch("http://schedule.dxrk.cc/groups/darina")
+        window.fetch("http://schedule.dxrk.cc/teachers/darina")
         .then(res => res.json())
         .then(
             result => {
                 let arr = [];
                 result.map(res => {
-                    if(res.faculty_id === Number(localStorage.getItem('Faculty'))) {
+                    if(res.department_id === Number(localStorage.getItem('Department'))) {
                         arr.push(res);
                         return arr;
                     } else {
@@ -28,7 +28,7 @@ export default function PageGroup() {
                     }
                 })
                 setIsLoaded(true);
-                setGroups(arr);
+                setProfessors(arr);
                 const selected = document.querySelector(".selected");
                 const optionsContainer = document.querySelector(".options-container");
                 const searchBox = document.querySelector(".search-box input");
@@ -94,19 +94,12 @@ export default function PageGroup() {
             <>
                 <Header />
                 <main className='group-content'>
-                        <Breadcrumb>
-                            <Breadcrumb.Item href="/schedule-faculty">Обрати факультет</Breadcrumb.Item>
-                            <Breadcrumb.Item href="/schedule-group/find" active>Обрати групу</Breadcrumb.Item>
-                        </Breadcrumb> 
-                <Nav variant="tabs" defaultActiveKey="link-1">
-                        <Nav.Item>
-                            <Nav.Link eventKey="link-1" href='/schedule-group/find'>Розклад на групу</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="link-2" href='/schedule-professor'>Розклад на викладача</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                    <h3>Оберіть групу</h3>
+                    <Breadcrumb>
+                        <Breadcrumb.Item href="/schedule-faculty">Обрати факультет</Breadcrumb.Item>
+                        <Breadcrumb.Item href="/schedule-professor">Обрати кафедру</Breadcrumb.Item>
+                        <Breadcrumb.Item active>Обрати викладача</Breadcrumb.Item>
+                    </Breadcrumb> 
+                    <h3>Оберіть прізвище викладача</h3>
 
 
                     <div className="container">
@@ -114,23 +107,23 @@ export default function PageGroup() {
                         <div className="select-box">
                             <div className="options-container">
 
-                                {groups.map(group => (
-                                    <Link to={`/schedule-group/${group.name}`} className="option" key={group.id} onClick={() => {
-                                        if(localStorage.getItem('Group')) {
-                                            localStorage.removeItem('Group');
-                                            localStorage.setItem('Group', `${group.id}`);
+                                {professors.map(professor => (
+                                    <Link to={`/schedule-professor/${professor.full_name}`} className="option" key={professor.id} onClick={() => {
+                                        if(localStorage.getItem('Professor')) {
+                                            localStorage.removeItem('Professor');
+                                            localStorage.setItem('Professor', `${professor.id}`);
                                         } else {
-                                            localStorage.setItem('Group', `${group.id}`);
+                                            localStorage.setItem('Professor', `${professor.id}`);
                                         }
                                     }}>
-                                        <input type="radio" className="radio" id={group.name} name="category" />
-                                        <label htmlFor={group.name}>{group.name}</label>
+                                        <input type="radio" className="radio" id={professor.full_name} name="category" />
+                                        <label htmlFor={professor.full_name}>{professor.full_name}</label>
                                     </Link>
                                 ))}
                             </div>
 
                             <div className="selected">
-                            Група
+                            Викладач
                             </div>
 
                             <div className="search-box">

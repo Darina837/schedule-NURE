@@ -16,7 +16,7 @@ export default function PageMain() {
             <Header />
             <main className='main-content'>
                 <img src={calendar} alt='' data-aos="zoom-in" data-aos-easing="linear" data-aos-duration="1000" />
-                <Link to='/schedule-group' data-aos="flip-up" data-aos-easing="linear" data-aos-duration="1000"><Button variant="primary">Перейти до розкладу <BsArrowRight /></Button></Link>
+                <Link to='/schedule-faculty' data-aos="flip-up" data-aos-easing="linear" data-aos-duration="1000"><Button variant="primary">Перейти до розкладу <BsArrowRight /></Button></Link>
             </main>
             <Footer />
         </>
